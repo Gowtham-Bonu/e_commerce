@@ -1,0 +1,32 @@
+<h1>New Order</h1>
+<%= form_with model: @order, url: orders_path do |form| %>
+  <%= form.hidden_field :product_id, value: params[:product_id]%> 
+    <div class="card container" >
+      <div class="card-body" >
+          <div class="mb-3" >
+            <%= form.label :quantity, {class: "form-label"}   %><br>
+            <%= form.number_field :quantity, {class: "form-control", placeholder: "quantity"}  %>
+            <% @order.errors.full_messages_for(:quantity).each do |message| %>
+              <div><%= message %></div>
+            <% end %>
+            </div>
+            <div class="mb-3" >
+              <%= form.label :status, {class: "form-label"}   %><br>
+              <%= form.select :status, ["booked", "canceled"]   %><br>
+              <% @order.errors.full_messages_for(:status).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+            </div>
+            <div class="mb-3" >
+              <%= form.label :customer_id, {class: "form-label"}   %><br>
+              <%= form.select :customer_id, @customer_names   %><br>
+              <% @order.errors.full_messages_for(:customer_id).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+            </div>
+            <div>
+              <%= form.submit %>
+            </div>
+        </div>
+    </div>
+<% end %>

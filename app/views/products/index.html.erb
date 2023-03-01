@@ -1,0 +1,32 @@
+<div class="slider" >
+  <div class="d-inline p-2 text-bg-white first"><%= link_to "All Products", root_path %></div>
+  <div class="d-inline p-2 text-bg-dark second"><%= link_to "Active products", active_path%></div>
+</div>
+<div class="later"><%= link_to "create a new product", new_product_path %></div>
+<table class="table table-dark table-striped" >
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>description</th>
+      <th>Price</th>
+      <th>Capacity</th>
+      <th>Status</th>
+      <th>Active</th>
+      <th colspan="2" >action</th>
+    </tr>  
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.title %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+        <td><%= product.capacity %></td>
+        <td><%= product.status %></td>
+        <td><%= product.is_active %></td>
+        <td><button class=" btn btn-light"><%= link_to "edit", edit_product_path(product) %></button></td>
+        <td><button class="delete  btn btn-light"><%= link_to "Destroy", product_path(product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

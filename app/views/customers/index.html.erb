@@ -1,0 +1,24 @@
+<div class="later"><%= link_to "create a new customer", new_customer_path %></div>
+<table class="table table-dark table-striped" >
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>last name</th>
+      <th>email</th>
+      <th>number</th>
+      <th colspan="2" >action</th>
+    </tr>  
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.first_name %></td>
+        <td><%= customer.last_name %></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.phone_number %></td>
+        <td><button class=" btn btn-light"><%= link_to "edit", edit_customer_path(customer) %></button></td>
+        <td><button class="delete  btn btn-light"><%= link_to "Destroy", customer_path(customer), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

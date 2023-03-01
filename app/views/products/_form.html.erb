@@ -1,0 +1,51 @@
+<%= form_with model: product do |form| %>
+<div class="card container" >
+  <div class="card-body" >
+     <div class="mb-3" >
+        <%= form.label :title, {class: "form-label"} %><br>
+        <%= form.text_field :title, {class: "form-control", placeholder: "Title"}  %>
+        <% product.errors.full_messages_for(:title).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+     </div>
+     <div class="mb-3" >
+        <%= form.label :description, {class: "form-label"} %><br>
+        <%= form.text_field :description, {class: "form-control", placeholder: "Description"}  %>
+        <% product.errors.full_messages_for(:description).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+     </div>
+      <div class="mb-3" >
+         <%= form.label :price, {class: "form-label"} %><br>
+         <%= form.number_field :price, {class: "form-control", placeholder: "price"}  %>
+         <% product.errors.full_messages_for(:price).each do |message| %>
+         <div><%= message %></div>
+         <% end %>
+      </div>
+      <div class="mb-3" >
+        <%= form.label :capacity, {class: "form-label"} %><br>
+        <%= form.number_field :capacity, {class: "form-control", placeholder: "capacity"}  %>
+        <% product.errors.full_messages_for(:capacity).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+     </div>
+     <div class="mb-3" >
+        <%= form.label :status, {class: "form-label"} %><br>
+        <%= form.select :status, ["in_stock", "out_of_stock", "coming_soon"]  %>
+        <% product.errors.full_messages_for(:status).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+     </div>
+     <div class="mb-3" >
+        <%= form.label :is_active, {class: "form-label"} %><br>
+        <%= form.check_box :is_active %>
+        <% product.errors.full_messages_for(:is_active).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+     </div>
+      <div>
+         <%= form.submit %>
+      </div>
+   </div>
+</div>
+<% end %>

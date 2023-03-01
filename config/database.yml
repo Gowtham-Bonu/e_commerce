@@ -1,0 +1,23 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: e_commerce_rev_development
+  pool: 5
+  host: localhost
+  username: gowtham1
+  password: Simform@123
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: e_commerce_rev_test
+  pool: 5
+  username: gowtham1
+  password: Simform@123
+
+staging:
+  url: <%= ENV['DATABASE_URL'] %>
+
+production:
+  url: <%= ENV['DATABASE_URL'] %> 

@@ -1,0 +1,42 @@
+<div class="large" >
+  <div class="form" >
+    <%= form_with url: orders_path, method: :get do |form| %>
+      <%= form.label :select_status, "Filter by status:", {class: "form-label"} %>
+      <%= form.select :select_status, ["canceled", "booked"] %>
+      <%= form.submit "Filter", {class: " bg-primary s_button btn btn-primary"} %>
+    <% end %>
+  </div>
+  <div class="form" >
+    <%= form_with url: orders_path, method: :get do |form| %>
+      <%= form.label :title, "Search by title:", {class: "form-label"} %>
+      <%= form.text_field :title, {class: "form-control", placeholder: "enter product title"} %>
+      <%= form.submit "Search", {class: " bg-primary s_button btn btn-primary"} %>
+    <% end %>
+  </div>
+</div>
+<p><%= @str %></p>
+<table class="table table-dark table-striped" >
+  <thead>
+    <tr>
+      <th>quantity</th>
+      <th>total_price</th>
+      <th>status</th>
+      <th>customer</th>
+      <th>product</th>
+      <th colspan = "2" >action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+     <tr>
+       <td><%= order.quantity %></td>
+       <td><%= order.total_price %></td>
+       <td><%= order.status %></td>
+       <td><%= @customers.find(order.customer_id).first_name %></td>
+       <td><%= @products.find(order.product_id).title %></td>
+       <td><button class=" btn btn-light"><%= link_to "edit", edit_order_path(order) %></button></td>
+       <td><button class="delete  btn btn-light"><%= link_to "Destroy", order_path(order), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button></td>
+     </tr>
+    <% end %>
+  </tbody>
+</table>
