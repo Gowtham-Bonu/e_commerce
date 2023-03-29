@@ -1,17 +1,22 @@
 class OrdersController < ApplicationController
+  before_action :get_order, only: [:edit, :update, :destroy]
+  before_action :get_customer_names, only: [:edit, :new]
+
+  def get_customer_names
+    @customer_names = Customer.pluck(:first_name, :id)
+  end
+
+  def get_order
+    @order = Order.find(params[:id])
+  end
+
   def new
     @order = Order.new
-    customers = Customer.all
-    @customer_names = []
-    customers.each do |customer|
-      @customer_names.push([customer.first_name, customer.id])
-    end
   end
 
   def create
     @order = Order.new(order_params)
-    products = Product.all.unscope(where: :is_active)
-    @product = products.find(@order.product_id)
+    @product = Product.unscoped.find(@order.product_id)
     if @order.save!
       product_price = @product.price 
       order_quant = @order.quantity
@@ -23,18 +28,10 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = Order.find(params[:id])
-    customers = Customer.all
-    @customer_names = []
-    customers.each do |customer|
-      @customer_names.push([customer.first_name, customer.id])
-    end
   end
 
   def update
-    @order = Order.find(params[:id])
-    products = Product.all.unscope(where: :is_active)
-    @product = products.find(@order.product_id)
+    @product = Product.unscoped.find(@order.product_id)
     if @order.update(order_params)
       product_price = @product.price 
       order_quant = @order.quantity
@@ -46,10 +43,8 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order = Order.find(params[:id])
     @order.destroy
-    products = Product.all.unscope(where: :is_active)
-    @product = products.find(params[:product_id])
+    @product = Product.unscoped.find(params[:product_id])
 
     redirect_to product_orders_path(@product), status: :see_other
   end
