@@ -18,9 +18,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @product = Product.unscoped.find(@order.product_id)
     if @order.save!
-      product_price = @product.price 
-      order_quant = @order.quantity
-      @order.update(total_price: product_price * order_quant )
+      @order.update(total_price: @product.price  * @order.quantity )
       redirect_to active_path
     else
       render :new, status: :unprocessable_entity
@@ -33,9 +31,7 @@ class OrdersController < ApplicationController
   def update
     @product = Product.unscoped.find(@order.product_id)
     if @order.update(order_params)
-      product_price = @product.price 
-      order_quant = @order.quantity
-      @order.update(total_price: product_price * order_quant )
+      @order.update(total_price: @product.price  * @order.quantity )
       redirect_to orders_path
     else
       render :edit, status: :unprocessable_entity
