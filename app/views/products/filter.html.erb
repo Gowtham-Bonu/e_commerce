@@ -13,12 +13,12 @@
   <tbody>
     <% @product_arr_q.each do |arr| %>
       <tr>
-        <td><%= arr[:title] %> </td>
-        <td><%= arr[:description] %> </td>
-        <td><%= arr[:price] %> </td>
-        <td><%= arr[:capacity] %> </td>
-        <td><%= arr[:status] %> </td>
-        <td><%= arr[:is_active] %> </td>
+        <td><%= arr.title %> </td>
+        <td><%= arr.description %> </td>
+        <td><%= arr.price %> </td>
+        <td><%= arr.capacity %> </td>
+        <td><%= arr.status %> </td>
+        <td><%= arr.is_active %> </td>
       <% end %>
   </tbody>
 </table>
@@ -38,12 +38,12 @@
   <tbody>
     <% @product_arr_p.each do |arr| %>
       <tr>
-        <td><%= arr[:title] %> </td>
-        <td><%= arr[:description] %> </td>
-        <td><%= arr[:price] %> </td>
-        <td><%= arr[:capacity] %> </td>
-        <td><%= arr[:status] %> </td>
-        <td><%= arr[:is_active] %> </td>
+        <td><%= arr.title %> </td>
+        <td><%= arr.description %> </td>
+        <td><%= arr.price %> </td>
+        <td><%= arr.capacity %> </td>
+        <td><%= arr.status %> </td>
+        <td><%= arr.is_active %> </td>
       <% end %>
   </tbody>
 </table>
@@ -61,10 +61,10 @@
   <tbody>
     <% @customer_arr_booked.each do |arr| %>
       <tr>
-        <td><%= arr[:first_name] %> </td>
-        <td><%= arr[:last_name] %> </td>
-        <td><%= arr[:email] %> </td>
-        <td><%= arr[:phone_number] %> </td>
+        <td><%= arr.first_name %> </td>
+        <td><%= arr.last_name %> </td>
+        <td><%= arr.email %> </td>
+        <td><%= arr.phone_number %> </td>
       </tr>
   <% end %>
   </tbody>
@@ -82,10 +82,10 @@
   <tbody>
     <% @customer_arr_cancelled.each do |arr| %>
       <tr>
-        <td><%= arr[:first_name] %> </td>
-        <td><%= arr[:last_name] %> </td>
-        <td><%= arr[:email] %> </td>
-        <td><%= arr[:phone_number] %> </td>
+        <td><%= arr.first_name %> </td>
+        <td><%= arr.last_name %> </td>
+        <td><%= arr.email %> </td>
+        <td><%= arr.phone_number %> </td>
       </tr>
     <% end %>
   </tbody>
