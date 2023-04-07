@@ -1,1 +1,7 @@
 <div class="last" ><h1>The total order count for <%= @product.title %> is: <span><%= @product.orders.count %></span></h1></div>
+<p><%= @product.description %><p>
+<ul class="list-group">
+  <li class="list-group-item list-group-item-primary">Product Price: <%= @product.price %></li>
+  <li class="list-group-item list-group-item-secondary">Product Capacity: <%= @product.capacity %></li>
+  <li class="list-group-item list-group-item-success">Product Status: <%= @product.status %></li>
+</ul>

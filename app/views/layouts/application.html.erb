@@ -16,8 +16,13 @@
     <div><%= link_to "Products", root_path %></div>
     <div><%= link_to "customers", customers_path %></div>
     <div><%= link_to "Orders", orders_path %></div>
-    <div><%= link_to "product, customer, and order listing", filter_path %></div>
+    <div><%= link_to "product, customer, and order listing", filter_products_path %></div>
   </nav>
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

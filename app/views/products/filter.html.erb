@@ -28,27 +28,31 @@
   <thead>
     <tr>
       <th>Product</th>
-      <th>last name</th>
-      <th>email</th>
-      <th>phone</th>
+      <th>description</th>
+      <th>Price</th>
+      <th>Capacity</th>
+      <th>Status</th>
+      <th>Active</th>
     </tr>  
   </thead>
   <tbody>
-    <% @customer_arr.each do |arr| %>
+    <% @product_arr_p.each do |arr| %>
       <tr>
-        <td><%= arr.first_name %> </td>
-        <td><%= arr.last_name %> </td>
-        <td><%= arr.email %> </td>
-        <td><%= arr.phone_number %> </td>
-      </tr>
-    <% end %>
+        <td><%= arr.title %> </td>
+        <td><%= arr.description %> </td>
+        <td><%= arr.price %> </td>
+        <td><%= arr.capacity %> </td>
+        <td><%= arr.status %> </td>
+        <td><%= arr.is_active %> </td>
+      <% end %>
   </tbody>
+</table>
 </table>
 <p class="special" >most booked order of product</p>
 <table class="table table-dark table-striped">
   <thead>
     <tr>
-      <th>Product</th>
+      <th>Customer</th>
       <th>last name</th>
       <th>email</th>
       <th>phone</th>
@@ -69,7 +73,7 @@
 <table class="table table-dark table-striped">
   <thead>
     <tr>
-      <th>Product</th>
+      <th>Customer</th>
       <th>last name</th>
       <th>email</th>
       <th>phone</th>
